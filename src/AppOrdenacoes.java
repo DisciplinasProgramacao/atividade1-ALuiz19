@@ -9,22 +9,30 @@ public class AppOrdenacoes {
     static Integer[] gerarVetor(int tamanho){
         Integer[] vetor = new Integer[tamanho];
         for (int i = 0; i < tamanho; i++) {
-            vetor[i] = aleatorio.nextInt(1, tamanho/2);
+            vetor[i] = aleatorio.nextInt(i, i+3);
         }
         return vetor;
     }
     static Random aleatorio = new Random(42);
 
     
-    public static void main(String[] args){
+    public static void main(String[] args){        
         Integer[] vetor = gerarVetor(100_000);
-        Bubblesort<Integer> ordernador = new Bubblesort<Integer>();
+        IOrdenador<Integer> ordernador = new Bubblesort<Integer>();
         Integer[] vetorOrdenado = ordernador.ordernar(vetor);
 
+        System.out.println("Bolha:");
         System.out.println(vetor.length);
         System.out.println(ordernador.getComparacoes());
         System.out.println(ordernador.getMovimentacoes());
         System.out.println(ordernador.getTempoOrdenacao());
 
+        System.out.println("Inserção:");
+        ordernador = new Insercao<Integer>();
+        ordernador.ordernar(vetor);
+        System.out.println(vetor.length);
+        System.out.println(ordernador.getComparacoes());
+        System.out.println(ordernador.getMovimentacoes());
+        System.out.println(ordernador.getTempoOrdenacao());
     }
 }
