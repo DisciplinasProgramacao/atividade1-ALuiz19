@@ -19,7 +19,7 @@ public class AppOrdenacoes {
     public static void main(String[] args){        
         Integer[] vetor = gerarVetor(100_000);
         IOrdenador<Integer> ordernador = new Bubblesort<Integer>();
-        Integer[] vetorOrdenado = ordernador.ordernar(vetor);
+        Integer[] vetorOrdenado = ordernador.ordenar(vetor);
 
         System.out.println("Bolha:");
         System.out.println(vetor.length);
@@ -29,7 +29,7 @@ public class AppOrdenacoes {
 
         System.out.println("Inserção:");
         ordernador = new Insercao<Integer>();
-        ordernador.ordernar(vetor);
+        ordernador.ordenar(vetor);
         System.out.println(vetor.length);
         System.out.println(ordernador.getComparacoes());
         System.out.println(ordernador.getMovimentacoes());

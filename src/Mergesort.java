@@ -1,6 +1,7 @@
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Mergesort<T extends Comparable<T>> implements IOrdenador<T>{
     
@@ -16,7 +17,7 @@ public class Mergesort<T extends Comparable<T>> implements IOrdenador<T>{
         }
         
         @Override
-        public T[] ordernar(T[] dados) {
+        public T[] ordenar(T[] dados) {
             int tamanho = dados.length;
             dadosOrdenados = Arrays.copyOf(dados, tamanho);
             inicio = LocalDateTime.now();
@@ -24,7 +25,13 @@ public class Mergesort<T extends Comparable<T>> implements IOrdenador<T>{
             termino = LocalDateTime.now();
             return dadosOrdenados;
         }
-    
+
+        @Override
+        public T[] ordenar(T[] dados, Comparator<T> comparador) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'ordenar'");
+        }
+
         private T[] mergesort(int ini, int fim){
             if(ini < fim){
                 int meio = (fim+ini)/2;
@@ -78,7 +85,5 @@ public class Mergesort<T extends Comparable<T>> implements IOrdenador<T>{
         public double getTempoOrdenacao() {
             return Duration.between(inicio, termino).toMillis();
         }
-
-
 }
 

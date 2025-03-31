@@ -1,6 +1,7 @@
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Insercao<T extends Comparable<T>> 
     implements IOrdenador<T>
@@ -9,9 +10,18 @@ public class Insercao<T extends Comparable<T>>
     private long comparacoes;
     private LocalDateTime inicio, fim;
 
+    @Override
+    public long getComparacoes(){
+        return comparacoes;
+    }
 
     @Override
-    public T[] ordernar(T[] dados) {
+    public long getMovimentacoes() {
+        return movimentacoes;
+    }
+
+    @Override
+    public T[] ordenar(T[] dados) {
         T[] copiaDados = Arrays.copyOf(dados, dados.length);
         int tamanho = copiaDados.length;
         comparacoes = movimentacoes = 0;
@@ -33,13 +43,9 @@ public class Insercao<T extends Comparable<T>>
     }
 
     @Override
-    public long getComparacoes(){
-        return comparacoes;
-    }
-
-    @Override
-    public long getMovimentacoes() {
-        return movimentacoes;
+    public T[] ordenar(T[] dados, Comparator<T> comparador) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'ordenar'");
     }
 
     private void copiarDados(int inicio, int fim, T[] vet){
@@ -52,5 +58,5 @@ public class Insercao<T extends Comparable<T>>
     @Override
     public double getTempoOrdenacao() {
         return Duration.between(inicio, fim).toMillis();
-    }
+    }    
 }
